@@ -11,6 +11,8 @@ import axios from 'axios';
 const RPC_URL = process.env.REACT_APP_TESTNET_RPC_URL;
 const ASSET_CODE = process.env.REACT_APP_ASSET_CODE;
 const ASSET_ISSUER = process.env.REACT_APP_ASSET_ISSUER;
+const NETWORK_PASSPHRASE = Networks.TESTNET;
+
 
 export default function EstablishTrustlineComponent({ publicKey, kit }) {
   const establishTrustline = async () => {
@@ -20,9 +22,6 @@ export default function EstablishTrustlineComponent({ publicKey, kit }) {
     }
 
     try {
-      
-      // Get the NETWORK_PASSPHRASE
-      const NETWORK_PASSPHRASE = Networks.TESTNET;
 
       // 1. Load account details to get sequence number
       const accountResponse = await axios.get(`${RPC_URL}/accounts/${publicKey}`);

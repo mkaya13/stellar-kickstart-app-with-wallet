@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./index.css";
 import StellarWalletConnection from "./components/StellarWalletConnection/StellarWalletConnection";
 import EstablishTrustlineComponent from "./components/EstablishTrustlineComponent/EstablishTrustlineComponent";
+import HelloWorldGetUserNameComponent from "./components/HelloWorldGetUserNameComponent/HelloWorldGetUserNameComponent";
+import HelloWorldWriteUserNameComponent from "./components/HelloWorldWriteUserNameComponent/HelloWorldWriteUserNameComponent";
 
 
 function App() {
@@ -21,6 +23,19 @@ function App() {
           kit={walletInfo.kit}
         />
       )}
+      {walletInfo.publicKey && walletInfo.kit && (
+        <HelloWorldGetUserNameComponent
+          publicKey={walletInfo.publicKey}
+          kit={walletInfo.kit}
+        />
+      )}
+      {walletInfo.publicKey && walletInfo.kit && (
+        <HelloWorldWriteUserNameComponent
+          publicKey={walletInfo.publicKey}
+          kit={walletInfo.kit}
+        />
+      )}
+
     </div>
   );
 }
