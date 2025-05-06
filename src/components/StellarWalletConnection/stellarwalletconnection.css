@@ -1,0 +1,45 @@
+.wallet-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.wallet-connected-btn {
+  display: flex;
+  align-items: center;
+  background-color: #3B56E3; /* Stellar bluish color */
+  color: black;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 5px 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wallet-address {
+  background-color: #ffffff;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.stellar-icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 0.6rem;
+}
+
+
+.custom-wallet-btn {
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #6366f1;
+  color: white;
+  border-radius: 8px;
+}
+
+.connection-status {
+  font-size: 14px;
+  color: #555;
+}
