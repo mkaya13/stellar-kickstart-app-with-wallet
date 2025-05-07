@@ -1,7 +1,6 @@
-// modules/FetchAssets.js
-const FetchAssets = async (publicKey) => {
+const FetchAssets = async (RPC_URL, publicKey) => {
     try {
-      const res = await fetch(`https://horizon-testnet.stellar.org/accounts/${publicKey}`);
+      const res = await fetch(`${RPC_URL}/accounts/${publicKey}`);
       const data = await res.json();
       return data.balances || [];
     } catch (error) {
