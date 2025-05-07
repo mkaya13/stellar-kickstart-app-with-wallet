@@ -62,7 +62,7 @@ const StellarWalletConnection = ({ onConnect }) => {
 
   return (
     <div className="wallet-feature">
-      <h1>Stellar Wallet Connection</h1>
+      <h1>Stellar Wallet Connection Component</h1>
 
       {connectedWalletPublicKey ? (
         <div className="wallet-connected-btn">
@@ -78,26 +78,6 @@ const StellarWalletConnection = ({ onConnect }) => {
       <span className="connection-status">
         {connectedWalletPublicKey ? `Address: ${connectedWalletPublicKey}` : "Not connected"}
       </span>
-
-      <div className="wallet-assets">
-        {!connectedWalletPublicKey ? (
-          <p>Connect your wallet to Stellar Testnet.</p>
-        ) : loading ? (
-          <p>Loading balances...</p>
-        ) : assets.length === 0 ? (
-          <p>No assets found.</p>
-        ) : (
-          <ul>
-            {assets.map((a, i) => (
-              <li key={i}>
-                {a.asset_type === 'native'
-                  ? `XLM: ${parseFloat(a.balance).toFixed(2)}`
-                  : `${a.asset_code}: ${parseFloat(a.balance).toFixed(2)} (issuer: ${a.asset_issuer.slice(0, 6)}...)`}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 };

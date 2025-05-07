@@ -4,9 +4,10 @@ import StellarWalletConnection from "./components/StellarWalletConnection/Stella
 import EstablishTrustlineComponent from "./components/EstablishTrustlineComponent/EstablishTrustlineComponent";
 import HelloWorldGetUserNameComponent from "./components/HelloWorldGetUserNameComponent/HelloWorldGetUserNameComponent";
 import HelloWorldWriteUserNameComponent from "./components/HelloWorldWriteUserNameComponent/HelloWorldWriteUserNameComponent";
+import AccountAssetsComponent from "./components/AccountAssetsComponent/AccountAssetsComponent";
 
 
-function App() {
+export default function App() {
 
   const [walletInfo, setWalletInfo] = useState({
     publicKey: null,
@@ -15,7 +16,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="app">
       <StellarWalletConnection onConnect={setWalletInfo} />
       {walletInfo.publicKey && walletInfo.kit && (
         <EstablishTrustlineComponent
@@ -26,7 +27,6 @@ function App() {
       {walletInfo.publicKey && walletInfo.kit && (
         <HelloWorldGetUserNameComponent
           publicKey={walletInfo.publicKey}
-          kit={walletInfo.kit}
         />
       )}
       {walletInfo.publicKey && walletInfo.kit && (
@@ -35,9 +35,12 @@ function App() {
           kit={walletInfo.kit}
         />
       )}
+      {walletInfo.publicKey && walletInfo.kit && (
+        <AccountAssetsComponent
+          publicKey={walletInfo.publicKey}
+        />
+      )}
 
     </div>
   );
 }
-
-export default App;
