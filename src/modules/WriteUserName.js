@@ -17,16 +17,10 @@ const WriteUserName = async (RPC_URL, CONTRACT_PUBLIC_KEY, newUserName, publicKe
 
     // 1. Define Credentials
     const accountResponse = await axios.get(`${RPC_URL}/accounts/${publicKey}`);
+    const sequence = accountResponse.data.sequence;
     const NETWORK_PASSPHRASE = Networks.TESTNET;
     const contract = new Contract(CONTRACT_PUBLIC_KEY);
-    const sequence = accountResponse.data.sequence;
     const account = new Account(publicKey, sequence);
-
-    console.log(accountResponse)
-    console.log(NETWORK_PASSPHRASE)
-    console.log(contract)
-    console.log(sequence)
-    console.log(account)
 
     // 2. Convert Function Parameter to nativeToScVal
     const raw = nativeToScVal(newUserName, { type: 'symbol' });
@@ -55,11 +49,20 @@ const WriteUserName = async (RPC_URL, CONTRACT_PUBLIC_KEY, newUserName, publicKe
       }
     );
 
+    const authEntriesXdr = simResponse.data.result
+    console.log("authEntriesXdr", authEntriesXdr)
+
+    console.log("-----------------------------------------------------")
+
     // 5. Get the transactionData
     const transactionData = simResponse.data.result.transactionData;
+    console.log("transactionData", transactionData)
 
     // 6. Decode a base64-encoded string (transactionData) into a SorobanTransactionData object
     const sorobanData = xdr.SorobanTransactionData.fromXDR(transactionData, 'base64');
+
+    // Check the switch
+    console.log("🧪 sorobanData switch value:", sorobanData.ext().switch()); // 🔥 MUST be 1
 
     // 7. Grap the Updated Fee
     const updatedFee = (parseInt(simResponse.data.result.minResourceFee) + 100).toString();
@@ -81,6 +84,7 @@ const WriteUserName = async (RPC_URL, CONTRACT_PUBLIC_KEY, newUserName, publicKe
             networkPassphrase: NETWORK_PASSPHRASE,
     });
 
+    // 10. Submit the Transaction Request
     const submitResponse = await axios.post(
       RPC_URL,
       {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import "./helloworldwriteusernamecomponent.css";
 import WriteUserName from '../../modules/WriteUserName';
 
 export default function WriteUserNameComponent({ publicKey, kit}) {
@@ -19,7 +20,7 @@ export default function WriteUserNameComponent({ publicKey, kit}) {
   };
 
   return (
-    <div className="App">
+    <div className="write-user-feature">
       <h1>Write User Name Component</h1>
       <input
         type="text"
