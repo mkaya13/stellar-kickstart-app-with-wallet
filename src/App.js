@@ -5,6 +5,7 @@ import EstablishTrustlineComponent from "./components/EstablishTrustlineComponen
 import HelloWorldGetUserNameComponent from "./components/HelloWorldGetUserNameComponent/HelloWorldGetUserNameComponent";
 import HelloWorldWriteUserNameComponent from "./components/HelloWorldWriteUserNameComponent/HelloWorldWriteUserNameComponent";
 import AccountAssetsComponent from "./components/AccountAssetsComponent/AccountAssetsComponent";
+import BuyRealtyTokenComponent from "./components/BuyRealtyTokenComponent/BuyRealtyTokenComponent";
 
 
 export default function App() {
@@ -38,6 +39,12 @@ export default function App() {
       {walletInfo.publicKey && walletInfo.kit && (
         <AccountAssetsComponent
           publicKey={walletInfo.publicKey}
+        />
+      )}
+      {walletInfo.publicKey && walletInfo.kit && (
+        <BuyRealtyTokenComponent
+          publicKey={walletInfo.publicKey}
+          kit={walletInfo.kit}
         />
       )}
 
