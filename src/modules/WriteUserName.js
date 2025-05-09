@@ -9,11 +9,6 @@ import {
 import axios from 'axios';
 
 const WriteUserName = async (RPC_URL, CONTRACT_PUBLIC_KEY, newUserName, publicKey, kit) => {
-    
-    if (!publicKey) {
-      alert("🚫 Wallet not connected.");
-      return;
-    }
 
     // 1. Define Credentials
     const accountResponse = await axios.get(`${RPC_URL}/accounts/${publicKey}`);

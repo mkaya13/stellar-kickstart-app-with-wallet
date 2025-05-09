@@ -14,11 +14,6 @@ const FetchUserName = async (RPC_URL, CONTRACT_PUBLIC_KEY, publicKey) => {
     const NETWORK_PASSPHRASE = Networks.TESTNET;
     const contract = new Contract(CONTRACT_PUBLIC_KEY);
 
-    if (!publicKey) {
-      alert("🚫 Wallet not connected.");
-      return;
-    }
-
     // 2. Retrieve Account
     const account = new Account(publicKey, "0");
 
