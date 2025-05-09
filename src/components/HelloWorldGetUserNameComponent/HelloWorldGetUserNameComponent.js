@@ -16,6 +16,11 @@ export default function HelloWorldGetUserNameComponent ({ publicKey }) {
 
     const ReadUserNameHandler = async () => {
 
+      if (!publicKey) {
+        alert("🚫 Wallet not connected.");
+        return;
+      }
+
       const fetched_user_name = await FetchUserName(RPC_URL, CONTRACT_PUBLIC_KEY, publicKey);
       setUserName(fetched_user_name);
   

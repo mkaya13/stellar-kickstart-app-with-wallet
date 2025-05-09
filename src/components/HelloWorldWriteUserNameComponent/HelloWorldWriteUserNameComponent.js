@@ -9,7 +9,12 @@ export default function WriteUserNameComponent({ publicKey, kit}) {
   const CONTRACT_PUBLIC_KEY = process.env.REACT_APP_HELLO_WORLD_CONTRACT_PUBLIC_KEY;
   const RPC_URL = process.env.REACT_APP_TESTNET_RPC_URL;
 
-  const changeUserName = async () => {
+  const changeUserNameHandler = async () => {
+
+    if (!publicKey) {
+      alert("🚫 Wallet not connected.");
+      return;
+    }
 
     await WriteUserName(RPC_URL, CONTRACT_PUBLIC_KEY, newUserName, publicKey, kit) 
 
@@ -28,7 +33,7 @@ export default function WriteUserNameComponent({ publicKey, kit}) {
         value={newUserName}
         onChange={(e) => setNewUserName(e.target.value)}
       />
-      <button onClick={changeUserName}>Change User Name</button>
+      <button onClick={changeUserNameHandler}>Change User Name</button>
 
       {/* Optional feedback */}
       {submittedUserName && (
